@@ -14,8 +14,7 @@ WORKDIR /app
 COPY --from=build /src/casino /app/casino
 COPY web /app/web
 RUN mkdir -p /app/data
-# Mount a persistent volume here to keep players, history and logs across deploys.
-VOLUME ["/app/data"]
+# Attach a Railway Volume at /app/data to keep players, history and logs across deploys.
 ENV PORT=8080
 EXPOSE 8080
 # Railway (and most hosts) inject $PORT; bind to all interfaces.
