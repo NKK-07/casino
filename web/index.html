@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OOP Casino</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;800&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+
+<!-- Join screen -->
+<main id="join" class="join" hidden>
+  <h1 class="gold">OOP CASINO</h1>
+  <p class="tagline">Play money &middot; strictly by invitation</p>
+  <form id="joinForm" class="panel">
+    <label for="nameInput">Your name</label>
+    <input id="nameInput" class="input" type="text" maxlength="16" autocomplete="off" required>
+    <p id="joinHelp" class="help">2 to 16 letters, digits, underscore or dash. You start with 1,000 play chips.</p>
+    <button class="btn primary full" type="submit">Enter the casino</button>
+  </form>
+  <p class="fine">No real money. Ever.</p>
+</main>
+
+<!-- Lobby: list of rooms, create a room, join by code -->
+<div id="lobby" class="room" hidden>
+  <header class="hdr">
+    <nav class="hdr-side">
+      <button class="hbtn" data-drawer="rules">Rules</button>
+      <button class="hbtn" data-drawer="leaderboard">Leaderboard</button>
+      <button class="hbtn" data-drawer="history">History</button>
+    </nav>
+    <div class="brand"><h1 class="gold">OOP CASINO</h1><small>The lobby</small></div>
+    <div class="hdr-side right">
+      <span id="lobbyBalance" class="balance">&nbsp;</span>
+      <button id="lobbyLeave" class="hbtn">Leave</button>
+    </div>
+  </header>
+  <div class="lobby-grid">
+    <section class="panel">
+      <h2 class="gold">Open a room</h2>
+      <form id="createForm">
+        <label for="roomName">Room name</label>
+        <input id="roomName" class="input" type="text" maxlength="24" autocomplete="off" placeholder="Friday night table">
+        <button class="btn primary full" type="submit">Create room</button>
+      </form>
+      <h2 class="gold">Join with a code</h2>
+      <form id="codeForm">
+        <label for="roomCode">Room code</label>
+        <input id="roomCode" class="input code" type="text" maxlength="5" autocomplete="off" placeholder="K7Q2X">
+        <button class="btn full" type="submit">Join room</button>
+      </form>
+    </section>
+    <section class="panel">
+      <h2 class="gold">Rooms</h2>
+      <div id="roomList" class="room-list"></div>
+    </section>
+  </div>
+</div>
+
+<!-- Table screen -->
+<div id="room" class="room" hidden>
+  <header class="hdr">
+    <nav class="hdr-side">
+      <button class="hbtn" data-drawer="rules">Rules</button>
+      <button class="hbtn" data-drawer="leaderboard">Leaderboard</button>
+      <button class="hbtn" data-drawer="history">History</button>
+    </nav>
+    <div class="brand"><h1 class="gold">OOP CASINO</h1><small id="subtitle">Play money</small></div>
+    <div class="hdr-side right">
+      <button id="codeBtn" class="hbtn code-chip" title="Copy the room code to invite friends">Code</button>
+      <span id="balance" class="balance">&nbsp;</span>
+      <button id="leaveBtn" class="hbtn">Leave room</button>
+    </div>
+  </header>
+
+  <div class="middle">
+    <section class="plaque" aria-label="Table log">
+      <h2 class="gold">TABLE LOG</h2>
+      <div id="log" class="log" aria-live="polite"></div>
+    </section>
+    <section class="tablearea">
+      <div id="table" class="tablebox"></div>
+    </section>
+  </div>
+
+  <section id="dock" class="dock" aria-live="assertive"></section>
+</div>
+
+<div id="banner" class="banner" role="status" hidden></div>
+
+<div id="dim" class="dim" hidden></div>
+<aside id="drawer" class="drawer" hidden aria-modal="true" role="dialog">
+  <button id="drawerClose" class="xbtn" aria-label="Close">&times;</button>
+  <div id="drawerBody"></div>
+</aside>
+
+</body>
+</html>
