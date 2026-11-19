@@ -1,5 +1,5 @@
 'use strict';
-// OOP Casino front end. One class per job:
+// Gilded Ace front end. One class per job:
 //   Api        - talks to the C++ server
 //   Session    - remembers who this browser tab is
 //   Card       - one playing card and how it is drawn

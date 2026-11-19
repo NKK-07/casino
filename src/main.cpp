@@ -15,7 +15,7 @@
 namespace {
 
 void printHelp() {
-    std::cout << "OOP Casino - Blackjack, Red Dog and Texas Hold'em (play money)\n\n"
+    std::cout << "Gilded Ace - Blackjack, Red Dog and Texas Hold'em (play money)\n\n"
                  "Usage:\n"
                  "  casino                         play in the terminal\n"
                  "  casino --web                   start the web app on http://localhost:8080\n"

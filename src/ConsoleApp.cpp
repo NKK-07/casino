@@ -212,7 +212,7 @@ void ConsoleApp::mainMenu() {
 }
 
 int ConsoleApp::run() {
-    console::banner("WELCOME TO THE OOP CASINO  -  play money only");
+    console::banner("WELCOME TO GILDED ACE  -  play money only");
     std::cout << "Blackjack, Red Dog and Texas Hold'em. Skill and probability, no real money.\n";
     printNotices();
     try {

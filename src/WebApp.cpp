@@ -89,7 +89,7 @@ int runWebServer(const WebOptions& options) {
         std::signal(SIGTERM, onSignal);
         server.start();
 
-        std::cout << "\n  OOP Casino (web) is running - play money only.\n"
+        std::cout << "\n  Gilded Ace (web) is running - play money only.\n"
                   << "  Open:   http://localhost:" << options.port << "/\n";
         if (options.host != "127.0.0.1") {
             std::cout << "  Friends on the same network can join at http://<this-computer's-IP>:" << options.port << "/\n";

@@ -1,4 +1,4 @@
-/* OOP Casino - "Gold Standard" theme: black, molten gold, wine-red felt. */
+/* Gilded Ace - "Gold Standard" theme: black, molten gold, wine-red felt. */
 :root {
   --g1: #f7e08e; --g2: #d4a93c; --g3: #8a6a1c;
   --wine: #6e1220; --wine2: #3a0912;
@@ -198,4 +198,60 @@ td.pos { color: var(--g1); }
   .lobby-grid { grid-template-columns: 1fr; padding: 14px 12px; }
   .range input { width: 140px; }
 }
-@media (prefers-reduced-motion: reduce) { .card { animation: none; } }
+
+
+/* ---------- brand & polish ---------- */
+.logo-xl { width: 112px; height: 112px; margin-bottom: 18px; filter: drop-shadow(0 0 28px rgba(247,224,142,.35)) drop-shadow(0 12px 18px rgba(0,0,0,.7));
+  animation: chip-in .8s cubic-bezier(.2,.9,.3,1.2) both; }
+.join .wordmark { animation: rise .7s .15s ease-out both; }
+.join .tagline { margin-bottom: 18px; animation: rise .7s .25s ease-out both; }
+.join .panel, .join .games, .join .fine { animation: rise .7s .35s ease-out both; }
+.suits { display: flex; gap: 18px; margin-bottom: 26px; font-size: 18px; color: var(--g2); opacity: .8; animation: rise .7s .3s ease-out both; }
+.suits .r { color: #b8283a; }
+.suits::before, .suits::after { content: ""; width: 60px; height: 1px; align-self: center; background: linear-gradient(90deg, transparent, var(--g3)); }
+.suits::after { background: linear-gradient(90deg, var(--g3), transparent); }
+.input::placeholder { color: #5f5644; }
+.input { transition: border-color .15s, box-shadow .15s; }
+.input:focus { border-color: var(--g1); box-shadow: 0 0 0 3px rgba(247,224,142,.12); outline: none; }
+
+.games { list-style: none; margin: 22px 0 0; padding: 0; width: min(520px, 100%); display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.games li { border: 1px solid rgba(212,169,60,.35); padding: 14px 10px; background: rgba(20,14,5,.55); text-align: center; transition: border-color .2s, transform .2s; }
+.games li:hover { border-color: var(--g1); transform: translateY(-2px); }
+.games b { display: block; font: 600 13px Cinzel, Georgia, serif; letter-spacing: .14em; color: var(--g1); margin-bottom: 4px; }
+.games span { font-size: 12px; color: var(--muted); line-height: 1.35; }
+
+.brand h1 { display: inline-flex; align-items: center; gap: 12px; letter-spacing: .3em; padding-left: 0; }
+.logo-sm { width: 30px; height: 30px; flex: none; filter: drop-shadow(0 0 10px rgba(247,224,142,.3)); }
+
+.btn, .hbtn, .pill, .stepper button { transition: border-color .15s, box-shadow .15s, transform .08s, filter .15s; }
+.btn:not(:disabled):active, .hbtn:active, .stepper button:active { transform: translateY(1px); }
+.btn.primary:not(:disabled):hover { filter: brightness(1.08); box-shadow: 0 0 30px rgba(247,224,142,.45); }
+.hbtn:hover, .btn:not(.primary):not(:disabled):hover { box-shadow: 0 0 14px rgba(247,224,142,.15); }
+.room-row { transition: background .15s; }
+.room-row:hover { background: rgba(212,169,60,.05); }
+
+* { scrollbar-width: thin; scrollbar-color: var(--g3) transparent; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: var(--g3); }
+::-webkit-scrollbar-track { background: transparent; }
+::selection { background: var(--g2); color: #1a1204; }
+
+@keyframes chip-in { from { transform: rotate(-180deg) scale(.4); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes rise { from { transform: translateY(10px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+@media (max-width: 900px) {
+  .logo-sm { width: 22px; height: 22px; }
+  .brand h1 { gap: 8px; }
+}
+@media (max-width: 520px) {
+  .games { grid-template-columns: 1fr; }
+  .games li { display: flex; justify-content: space-between; align-items: baseline; text-align: left; gap: 10px; }
+  .logo-xl { width: 88px; height: 88px; }
+  .panel { padding: 22px 18px; }
+  .join h1.wordmark { font-size: 30px; letter-spacing: .16em; padding-left: .16em; }
+  .join .tagline { letter-spacing: .28em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card, .logo-xl, .join .wordmark, .join .tagline, .join .panel, .join .games, .join .fine, .suits { animation: none; }
+  .games li:hover { transform: none; }
+}

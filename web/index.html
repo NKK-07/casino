@@ -3,7 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OOP Casino</title>
+<title>Gilded Ace</title>
+<meta name="description" content="Gilded Ace: private play-money tables for Blackjack, Red Dog and Texas Hold'em with friends and bots.">
+<meta name="theme-color" content="#050404">
+<meta property="og:title" content="Gilded Ace">
+<meta property="og:description" content="Private play-money card tables. Blackjack, Red Dog and Texas Hold'em.">
+<meta property="og:image" content="/logo.svg">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;800&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -13,15 +20,22 @@
 
 <!-- Join screen -->
 <main id="join" class="join" hidden>
-  <h1 class="gold">OOP CASINO</h1>
-  <p class="tagline">Play money &middot; strictly by invitation</p>
+  <img class="logo-xl" src="logo.svg" alt="" width="112" height="112">
+  <h1 class="gold wordmark">GILDED ACE</h1>
+  <p class="tagline">Private tables &middot; play money</p>
+  <div class="suits" aria-hidden="true"><span>&spades;</span><span class="r">&hearts;</span><span class="r">&diams;</span><span>&clubs;</span></div>
   <form id="joinForm" class="panel">
     <label for="nameInput">Your name</label>
-    <input id="nameInput" class="input" type="text" maxlength="16" autocomplete="off" required>
+    <input id="nameInput" class="input" type="text" maxlength="16" autocomplete="off" placeholder="e.g. RiverQueen" required>
     <p id="joinHelp" class="help">2 to 16 letters, digits, underscore or dash. You start with 1,000 play chips.</p>
-    <button class="btn primary full" type="submit">Enter the casino</button>
+    <button class="btn primary full" type="submit">Take a seat</button>
   </form>
-  <p class="fine">No real money. Ever.</p>
+  <ul class="games" aria-label="Games at the tables">
+    <li><b>Blackjack</b><span>Beat the dealer to 21</span></li>
+    <li><b>Red Dog</b><span>Will the card land in between?</span></li>
+    <li><b>Hold'em</b><span>No-limit poker with friends</span></li>
+  </ul>
+  <p class="fine">Play money only &middot; no real money, ever</p>
 </main>
 
 <!-- Lobby: list of rooms, create a room, join by code -->
@@ -32,7 +46,7 @@
       <button class="hbtn" data-drawer="leaderboard">Leaderboard</button>
       <button class="hbtn" data-drawer="history">History</button>
     </nav>
-    <div class="brand"><h1 class="gold">OOP CASINO</h1><small>The lobby</small></div>
+    <div class="brand"><h1 class="gold"><img class="logo-sm" src="logo.svg" alt="" width="30" height="30">GILDED ACE</h1><small>The lobby</small></div>
     <div class="hdr-side right">
       <span id="lobbyBalance" class="balance">&nbsp;</span>
       <button id="lobbyLeave" class="hbtn">Leave</button>
@@ -68,7 +82,7 @@
       <button class="hbtn" data-drawer="leaderboard">Leaderboard</button>
       <button class="hbtn" data-drawer="history">History</button>
     </nav>
-    <div class="brand"><h1 class="gold">OOP CASINO</h1><small id="subtitle">Play money</small></div>
+    <div class="brand"><h1 class="gold"><img class="logo-sm" src="logo.svg" alt="" width="30" height="30">GILDED ACE</h1><small id="subtitle">Play money</small></div>
     <div class="hdr-side right">
       <button id="codeBtn" class="hbtn code-chip" title="Copy the room code to invite friends">Code</button>
       <span id="balance" class="balance">&nbsp;</span>
