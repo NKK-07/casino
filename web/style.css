@@ -330,3 +330,12 @@ td.pos { color: var(--brass-hi); }
 }
 /* Hold the join screen's entrance until the curtains part. */
 .intro-on .join, .intro-on .join * { animation-play-state: paused !important; }
+
+/* ---------- card faces used by the flourishes ---------- */
+.ic-face .pip { font: 600 calc(var(--w) * .5)/1 var(--caps); }
+.ic-face.red { color: #9b1b25; }
+.intro-deck { transform-style: preserve-3d; }
+.ga-ring { position: absolute; border-radius: 50%; pointer-events: none; border: 1px solid rgba(234,215,162,.85);
+  box-shadow: 0 0 22px rgba(234,215,162,.45), inset 0 0 14px rgba(234,215,162,.3); }
+.ga-burst { position: absolute; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(244,226,170,.55), rgba(194,164,104,.18) 38%, transparent 68%); }

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shuffle Lab · Gilded Ace</title>
+<meta name="theme-color" content="#0b1410">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Cormorant+SC:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  body { overflow-x: hidden; }
+  .lab { min-height: 100%; display: flex; flex-direction: column; }
+  .lab-head { text-align: center; padding: 28px 16px 8px; }
+  .lab-head h1 { margin: 0; font: 600 clamp(30px, 5vw, 46px)/1 var(--serif); letter-spacing: .12em; text-transform: uppercase; }
+  .lab-head p { margin: 10px 0 0; font: italic 500 18px var(--serif); color: var(--brass); }
+  .lab-stage { position: relative; flex: 1; min-height: 460px; perspective: 1400px; overflow: hidden;
+    background: radial-gradient(ellipse 55% 50% at 50% 50%, rgba(194,164,104,.08), transparent 70%); }
+  .lab-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding: 16px 16px 10px; }
+  .lab-bar .btn { min-width: 150px; }
+  .lab-note { text-align: center; padding: 0 16px 26px; font-size: 13px; color: var(--muted); }
+  .lab-note a { color: var(--brass-hi); }
+  .lab-now { position: absolute; left: 0; right: 0; bottom: 18px; text-align: center; font: italic 500 18px var(--serif); color: var(--brass); }
+</style>
+</head>
+<body>
+<div class="lab">
+  <header class="lab-head">
+    <h1>Shuffle Lab</h1>
+    <p>Preview each flourish on its own</p>
+  </header>
+  <section class="lab-stage">
+    <div id="labDeck" class="intro-deck"></div>
+    <div id="labNow" class="lab-now"></div>
+  </section>
+  <nav class="lab-bar" id="labBar">
+    <button class="btn" data-run="riffle">Riffle</button>
+    <button class="btn" data-run="spring">Spring</button>
+    <button class="btn" data-run="packets">Four-packet cut</button>
+    <button class="btn" data-run="ribbon">Ribbon &amp; wave</button>
+    <button class="btn" data-run="carousel">Carousel</button>
+    <button class="btn" data-run="riffle,fanReveal">Fan &amp; ace reveal</button>
+    <button class="btn primary" data-run="riffle,spring,packets,ribbon,carousel,fanReveal">The whole repertoire</button>
+  </nav>
+  <p class="lab-note">
+    The opening plays riffle, four-packet cut, ribbon &amp; wave, then the ace reveal.
+    Try other combinations: <a href="/?intro=carousel,ribbon">carousel + ribbon</a> ·
+    <a href="/?intro=spring,packets">spring + packets</a> · <a href="/?intro">the opening</a>
+  </p>
+</div>
+<script src="deck.js"></script>
+<script>
+  'use strict';
+  (() => {
+    const box = document.getElementById('labDeck');
+    const now = document.getElementById('labNow');
+    const buttons = [...document.querySelectorAll('[data-run]')];
+    const names = { riffle: 'Riffle', spring: 'Spring', packets: 'Four-packet cut', ribbon: 'Ribbon & wave', carousel: 'Carousel', fanReveal: 'Fan & ace reveal' };
+    let busy = false;
+    let deck = new GADeck(box);
+    deck.deal();
+
+    async function play(list) {
+      if (busy) return;
+      busy = true;
+      buttons.forEach((b) => { b.disabled = true; });
+      deck = new GADeck(box);
+      await deck.deal();
+      for (const name of list) {
+        now.textContent = names[name] || name;
+        await GADeck.wait(180);
+        await deck[name]();
+      }
+      await GADeck.wait(900);
+      now.textContent = '';
+      buttons.forEach((b) => { b.disabled = false; });
+      busy = false;
+    }
+    buttons.forEach((b) => b.addEventListener('click', () => play(b.dataset.run.split(','))));
+  })();
+</script>
+</body>
+</html>
